@@ -23,21 +23,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Movementhandler () {
-        if (Input.GetKey(KeyCode.A)) {
-            rb2D.AddForce(new Vector2(speed * -1, 0));
-        }
+        if (Input.GetAxisRaw("Horizontal") != 0) { rb2D.AddForce(new Vector2(speed * Input.GetAxisRaw("Horizontal"), 0)); }
 
-        if (Input.GetKey(KeyCode.D)) {
-            rb2D.AddForce(new Vector2(speed, 0));
-        }
-
-        if (Input.GetKey(KeyCode.S)) {
-            rb2D.AddForce(new Vector2(0, speed * -1));
-        }
-
-        if (Input.GetKey(KeyCode.W)) {
-            rb2D.AddForce(new Vector2(0, speed));
-        }
+        if (Input.GetAxisRaw("Vertical") != 0) { rb2D.AddForce(new Vector2(0, speed * Input.GetAxisRaw("Vertical"))); }
 
         movingX = Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D);
         movingY = Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S);
