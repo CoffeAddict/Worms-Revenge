@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
     public float movementSpeed;
     public float rotationSpeed;
     public float rotationOffset;
@@ -92,11 +91,3 @@ public class EnemyMovement : MonoBehaviour
         if (rb2D.velocity.y < (topSpeed * -1)) rb2D.velocity = new Vector2(rb2D.velocity.x, (topSpeed * -1));
     }
 }
-
-
-
-// check if waypoints list is not empty, if so, stay steady
-// follow waypoints
-// if lookForPlayer is checked, check if player is around and there's no object in between (raycast)
-// while following player, ignore waypoints for 5 seconds and go back to last waypoint (idk how)
-
