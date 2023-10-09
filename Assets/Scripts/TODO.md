@@ -1,6 +1,6 @@
-Interaccion con entidades y entorno (perder vida, agarrar arma, abrir puertas)
-2 enemigos y un obstaculo (pozo/pinchos)
-los enemigos deben perseguir o disparar al jugador
-mostrar eventos por debug.log
-usar tile palette
-los valores numericos (hp, velocidad) deben ser publicos
+-Interaccion con el entorno (paredes, pinchos, pociones de vida)
+-Hacer que la torreta dispare
+-pinchos
+-pociones de vida
+-jugador puede disparar
+-mostrar todos los eventos con debug.log
