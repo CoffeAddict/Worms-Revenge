@@ -12,11 +12,10 @@ public class EnemyMovement : MonoBehaviour
     public GameObject pathParent = null;
     public float waypointSwitchRange = 4;
     public bool followWaypoint = false;
-    private Transform[] pathList;
-
-    private bool hasPath;
-    private Transform currentWaypoint = null;
-    private int currentWaypointIndex = 0;
+     Transform[] pathList;
+     bool hasPath;
+     Transform currentWaypoint = null;
+     int currentWaypointIndex = 0;
 
     Rigidbody2D rb2D;
 

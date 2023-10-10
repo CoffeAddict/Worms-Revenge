@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public float topSpeed;
     public float stopRate;
+    public bool lockMovement = false;
     Rigidbody2D rb2D;
     float movementX;
     float movementY;
@@ -15,22 +16,22 @@ public class PlayerMovement : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    private void Update () {
+     void Update () {
         movementX = Input.GetAxisRaw("Horizontal");
         movementY = Input.GetAxisRaw("Vertical");
     }
 
     void FixedUpdate () {
-        MovementHandler();
+        if (!lockMovement) MovementHandler();
         VelocityHandler();
     }
 
-    private void MovementHandler () {
+     void MovementHandler () {
         if (movementX != 0) { rb2D.AddForce(new Vector2(speed * movementX, 0)); }
         if (movementY != 0) { rb2D.AddForce(new Vector2(0, speed * movementY)); }
     }
 
-    private void VelocityHandler () {
+     void VelocityHandler () {
         if (movementX == 0) rb2D.velocity = new Vector2(rb2D.velocity.x / stopRate, rb2D.velocity.y);
         if (movementY == 0) rb2D.velocity = new Vector2(rb2D.velocity.x, rb2D.velocity.y / stopRate);
 
@@ -41,5 +42,9 @@ public class PlayerMovement : MonoBehaviour
         if (rb2D.velocity.y < (topSpeed * -1)) rb2D.velocity = new Vector2(rb2D.velocity.x, (topSpeed * -1));
 
         if (rb2D.angularVelocity > topSpeed) rb2D.angularVelocity = topSpeed;
+    }
+
+    public void pushDirection (Vector2 vector, float force) {
+        rb2D.AddForce(vector * force);
     }
 }

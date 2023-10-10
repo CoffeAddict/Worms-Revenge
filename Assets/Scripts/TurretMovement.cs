@@ -7,15 +7,15 @@ public class TurretMovement : MonoBehaviour
     public float rotationSpeed;
     public float rotationOffset;
     public float rangeOfView;
-    private GameObject player;
-    private float distanceToPlayer;
-    private Vector3 lastPlayerPosition;
+     PlayerState player;
+     float distanceToPlayer;
+     Vector3 lastPlayerPosition;
 
     Rigidbody2D rb2D;
 
     void Awake () {
         rb2D = GetComponent<Rigidbody2D>();
-        player = GameObject.FindWithTag("Player");
+        player = FindObjectOfType<PlayerState>();
     }
 
     void FixedUpdate () {
