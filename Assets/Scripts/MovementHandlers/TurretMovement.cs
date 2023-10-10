@@ -20,7 +20,7 @@ public class TurretMovement : MonoBehaviour
 
     void FixedUpdate () {
         if (player != null) {
-            if (playerOnRange() == true) {
+            if (PlayerOnRange() == true) {
                 lastPlayerPosition = player.transform.position;
             }
 
@@ -40,7 +40,7 @@ public class TurretMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * rotationSpeed);
     }
 
-    bool playerOnRange () {
+    bool PlayerOnRange () {
         distanceToPlayer = Vector3.Distance (player.transform.position, transform.position);
         return distanceToPlayer <= rangeOfView;
     }

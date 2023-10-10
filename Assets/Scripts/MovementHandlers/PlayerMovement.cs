@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour
         if (rb2D.angularVelocity > topSpeed) rb2D.angularVelocity = topSpeed;
     }
 
-    public void pushDirection (Vector2 vector, float force) {
+    public void PushDirection (Vector2 vector, float force) {
         rb2D.AddForce(vector * force);
     }
 }

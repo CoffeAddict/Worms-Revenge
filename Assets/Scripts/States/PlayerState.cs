@@ -6,19 +6,24 @@ public class PlayerState : MonoBehaviour
 {
     public int health;
     PlayerMovement playerMovement;
+    GameState gameState;
     Rigidbody2D rb2D;
 
      void Awake() {
+        gameState = FindObjectOfType<GameState>();
         playerMovement = GetComponent<PlayerMovement>();
         rb2D = GetComponent<Rigidbody2D>();
     }
 
-    public bool isAlive () {
-        return health <= 0;
+    public bool IsAlive () {
+        return health > 0;
     }
 
-    public void takeDamage (int damage, Collision2D col) {
+    public void TakeDamage (int damage, Collision2D col) {
         health -= damage;
+
+        if (!IsAlive()) {OnDeath(); return;}
+
         Debug.Log($"Health {health}");
 
         if (col != null) {
@@ -26,7 +31,17 @@ public class PlayerState : MonoBehaviour
             Vector2 dir = col.contacts[0].point - localPosition;
             dir = -dir.normalized;
 
-            playerMovement.pushDirection(dir, 400);
+            playerMovement.PushDirection(dir, 400);
         }
+    }
+
+    public void TakeHealing (int healing) {
+        health += healing;
+        Debug.Log($"You took a healing potion - Health {health}");
+    }
+
+    private void OnDeath () {
+        Debug.Log($"Player is dead, Game Over");
+        gameState.OnGameEnd();
     }
 }

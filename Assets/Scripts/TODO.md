@@ -1,6 +1,3 @@
--Interaccion con el entorno (paredes, pinchos, pociones de vida)
 -Hacer que la torreta dispare
--pinchos
--pociones de vida
 -jugador puede disparar
 -mostrar todos los eventos con debug.log

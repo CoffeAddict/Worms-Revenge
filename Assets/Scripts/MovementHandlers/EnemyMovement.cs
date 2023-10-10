@@ -33,27 +33,27 @@ public class EnemyMovement : MonoBehaviour
             list.RemoveAt(0);
             pathList = list.ToArray();
 
-            updateWaypoint();
+            UpdateWaypoint();
         }
 
     }
 
     void FixedUpdate () {
         if (followWaypoint == true) {
-            checkWaypointDistance(currentWaypoint);
-            rotateToWaypoint();
-            goForward();
+            CheckWaypointDistance(currentWaypoint);
+            RotateToWaypoint();
+            GoForward();
         };
 
     }
 
-    void checkWaypointDistance (Transform waypoint) {
+    void CheckWaypointDistance (Transform waypoint) {
         float distance = Vector3.Distance (waypoint.position, transform.position);
 
-        if (distance <= waypointSwitchRange) updateWaypoint();
+        if (distance <= waypointSwitchRange) UpdateWaypoint();
     }
 
-    void updateWaypoint () {
+    void UpdateWaypoint () {
         rb2D.velocity = new Vector3(rb2D.velocity.x / stopRate , rb2D.velocity.y / stopRate);
         rb2D.angularVelocity = rb2D.angularVelocity / stopRate ;
 
@@ -65,7 +65,7 @@ public class EnemyMovement : MonoBehaviour
         followWaypoint = true;
     }
 
-    void rotateToWaypoint () {
+    void RotateToWaypoint () {
         Vector3 targetPosition = currentWaypoint.position - transform.position;
 
         // I had to do some research to understand this
@@ -80,7 +80,7 @@ public class EnemyMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * rotationSpeed);
     }
 
-    void goForward () {
+    void GoForward () {
         rb2D.AddRelativeForce(new Vector2(0, movementSpeed));
 
         if (rb2D.velocity.x > topSpeed) rb2D.velocity = new Vector2(topSpeed, rb2D.velocity.y);
