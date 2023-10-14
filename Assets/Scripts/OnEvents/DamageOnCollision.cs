@@ -6,7 +6,7 @@ using UnityEngine;
 public class DamageOnCollision : MonoBehaviour
 {
     public int damage;
-    public Component enemyHandler;
+    // public Component enemyHandler;
     PlayerState playerState;
 
     void OnCollisionEnter2D(Collision2D col) {

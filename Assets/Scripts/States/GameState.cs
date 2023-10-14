@@ -5,8 +5,10 @@ using UnityEngine;
 public class GameState : MonoBehaviour
 {
     public bool gameRunning;
-    private void Awake() {
+    EnemyState[] enemyList;
+    void Awake() {
         OnGameStart();
+        enemyList = GetEnemies();
     }
 
     public void OnGameStart () {
@@ -16,5 +18,13 @@ public class GameState : MonoBehaviour
     public void OnGameEnd () {
         gameRunning = false;
         Debug.Break();
+    }
+
+    public void CheckGameState () {
+        Debug.Log(enemyList.Length);
+    }
+
+    EnemyState[] GetEnemies () {
+        return FindObjectsOfType<EnemyState>();
     }
 }

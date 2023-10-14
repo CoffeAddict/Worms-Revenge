@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerState : MonoBehaviour
 {
     public int health;
+    public int maxHealth;
     PlayerMovement playerMovement;
     GameState gameState;
     Rigidbody2D rb2D;
@@ -24,7 +25,7 @@ public class PlayerState : MonoBehaviour
 
         if (!IsAlive()) {OnDeath(); return;}
 
-        Debug.Log($"Health {health}");
+        Debug.Log($"Ouch! - Health {health}");
 
         if (col != null) {
             Vector2 localPosition = new Vector2(transform.position.x, transform.position.y);
@@ -36,11 +37,11 @@ public class PlayerState : MonoBehaviour
     }
 
     public void TakeHealing (int healing) {
-        health += healing;
+        if (health < maxHealth) health += healing;
         Debug.Log($"You took a healing potion - Health {health}");
     }
 
-    private void OnDeath () {
+    void OnDeath () {
         Debug.Log($"Player is dead, Game Over");
         gameState.OnGameEnd();
     }
