@@ -1,3 +1,1 @@
--Hacer que la torreta dispare
--jugador puede disparar
--mostrar todos los eventos con debug.log
+-curar player (fix)
