@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletMovement : MonoBehaviour
 {
-    public int speed;
+    public float speed;
     Rigidbody2D rb2D;
 
     void Awake () {
@@ -16,6 +16,6 @@ public class BulletMovement : MonoBehaviour
     }
 
     void MoveForward() {
-        rb2D.AddForce(new Vector2(0, speed));
+        rb2D.AddForce(transform.up * speed);
     }
 }

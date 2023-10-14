@@ -20,7 +20,7 @@ public class PlayerState : MonoBehaviour
         return health > 0;
     }
 
-    public void TakeDamage (int damage, Collision2D col) {
+    public void TakeDamage (int damage, Collision2D col = null) {
         health -= damage;
 
         if (!IsAlive()) {OnDeath(); return;}

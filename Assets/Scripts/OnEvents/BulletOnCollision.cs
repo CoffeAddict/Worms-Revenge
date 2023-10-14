@@ -17,7 +17,12 @@ public class BulletOnCollision : MonoBehaviour
 
         if (colObject.tag == "Enemy") {
             EnemyState enemyState = colObject.GetComponent<EnemyState>();
-            enemyState.TakeDamage(bulletState.damage);
+            if (enemyState != null) enemyState.TakeDamage(bulletState.damage);
+        }
+
+        if (bulletState.damagePlayer && colObject.tag == "Player") {
+            PlayerState playerState = colObject.GetComponent<PlayerState>();
+            if (playerState != null) playerState.TakeDamage(bulletState.damage);
         }
 
         bulletState.OnHit();

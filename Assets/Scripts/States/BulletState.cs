@@ -6,17 +6,17 @@ public class BulletState : MonoBehaviour
 {
     public int damage;
     public float lifeSpan;
-    float timer;
+    public bool damagePlayer;
+    float lifeSpanTimer;
 
     public void OnHit () {
-        Debug.Log("Hit");
         Destroy(gameObject);
     }
 
     void Update () {
-        timer += Time.deltaTime;
+        lifeSpanTimer += Time.deltaTime;
 
-        if (timer >= lifeSpan) OnHit();
+        if (lifeSpanTimer >= lifeSpan) OnHit();
     }
 
 
