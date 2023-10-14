@@ -7,9 +7,9 @@ public class TurretMovement : MonoBehaviour
     public float rotationSpeed;
     public float rotationOffset;
     public float rangeOfView;
-     PlayerState player;
-     float distanceToPlayer;
-     Vector3 lastPlayerPosition;
+    PlayerState player;
+    float distanceToPlayer;
+    Vector3 lastPlayerPosition;
 
     Rigidbody2D rb2D;
 
@@ -40,7 +40,7 @@ public class TurretMovement : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, desiredRotation, Time.deltaTime * rotationSpeed);
     }
 
-    bool PlayerOnRange () {
+    public bool PlayerOnRange () {
         distanceToPlayer = Vector3.Distance (player.transform.position, transform.position);
         return distanceToPlayer <= rangeOfView;
     }

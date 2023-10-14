@@ -12,19 +12,21 @@ public class BulletOnCollision : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        Debug.Log("Collion enter");
         GameObject colObject = col.gameObject;
 
-        if (colObject.tag == "Enemy") {
+        if (!bulletState.damagePlayer && colObject.tag == "Enemy") {
             EnemyState enemyState = colObject.GetComponent<EnemyState>();
             if (enemyState != null) enemyState.TakeDamage(bulletState.damage);
+
+            bulletState.OnHit();
         }
 
         if (bulletState.damagePlayer && colObject.tag == "Player") {
             PlayerState playerState = colObject.GetComponent<PlayerState>();
             if (playerState != null) playerState.TakeDamage(bulletState.damage);
+
+            bulletState.OnHit();
         }
 
-        bulletState.OnHit();
     }
 }

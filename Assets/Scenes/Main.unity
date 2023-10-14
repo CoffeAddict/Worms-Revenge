@@ -604,9 +604,11 @@ GameObject:
   - component: {fileID: 1308895856}
   - component: {fileID: 1308895859}
   - component: {fileID: 1308895858}
+  - component: {fileID: 1308895861}
+  - component: {fileID: 1308895860}
   m_Layer: 0
   m_Name: Turret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -726,6 +728,32 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1308895860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308895855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7367119f4e4c1d84da563ae368e353ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 25
+--- !u!114 &1308895861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308895855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c9b3571a97d11f4695b8590c7779410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
 --- !u!1001 &1380000655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -972,6 +1000,37 @@ MonoBehaviour:
   bullet: {fileID: 7874182041861664593, guid: 7d248c6262ab34c4d8b5f07e93eaa491, type: 3}
   rotationOffset: 90
   bulletColdDown: 0.5
+--- !u!1 &1689022472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1689022473}
+  m_Layer: 0
+  m_Name: BulletSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1689022473
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1689022472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.371, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1910281599}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1910281597
 GameObject:
   m_ObjectHideFlags: 0
@@ -983,6 +1042,7 @@ GameObject:
   - component: {fileID: 1910281599}
   - component: {fileID: 1910281598}
   - component: {fileID: 1910281602}
+  - component: {fileID: 1910281603}
   - component: {fileID: 1910281600}
   m_Layer: 0
   m_Name: TurretHead
@@ -1054,7 +1114,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.46666667, y: 1.3333334, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1689022473}
   m_Father: {fileID: 1308895857}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1094,6 +1155,21 @@ MonoBehaviour:
   rotationSpeed: 3
   rotationOffset: 90
   rangeOfView: 5
+--- !u!114 &1910281603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910281597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122100db254e73041ad5b20ec5bd05f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletSpawn: {fileID: 1689022472}
+  bullet: {fileID: 7874182041861664593, guid: 7321c40a9c9cc2e4b82dd540a903c7fb, type: 3}
+  bulletColdDown: 2
 --- !u!1001 &1980203804
 PrefabInstance:
   m_ObjectHideFlags: 0
