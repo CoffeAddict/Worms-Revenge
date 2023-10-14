@@ -6,6 +6,7 @@ public class GameState : MonoBehaviour
 {
     public bool gameRunning;
     EnemyState[] enemyList;
+    int enemyAmount;
     void Awake() {
         OnGameStart();
         enemyList = GetEnemies();
@@ -17,14 +18,18 @@ public class GameState : MonoBehaviour
 
     public void OnGameEnd () {
         gameRunning = false;
+        Debug.Log("All enemies are dead, you won!");
         Debug.Break();
     }
 
     public void CheckGameState () {
-        Debug.Log(enemyList.Length);
+        enemyAmount -= 1;
+        if (enemyAmount <= 0) OnGameEnd();
     }
 
     EnemyState[] GetEnemies () {
-        return FindObjectsOfType<EnemyState>();
+        EnemyState[] enemies = FindObjectsOfType<EnemyState>();
+        enemyAmount = enemies.Length;
+        return enemies;
     }
 }
